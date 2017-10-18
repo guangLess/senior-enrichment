@@ -16,10 +16,14 @@ import Students from './components/students'
 //   document.getElementById('main')
 // )
 
+const element = (<div>
+                    <Students />
+                    <h1> 🤣</h1>
+                </div>);
 
 
 render(
-    <Students />
+    element
  ,
   document.getElementById('main')
 )
