@@ -2,29 +2,27 @@
 import React from 'react'
 import {render} from 'react-dom'
 import { Provider } from 'react-redux'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
 import store from './store'
+import SillyMain from './components/silly'
 import Students from './components/students'
-//import Root from './components/Root'
-//<Root/>
 
-
-// render(
-//   <Provider store={store}>
-//   <Students />
-//   <h1> Hello world </h1>
-//   </Provider>,
-//   document.getElementById('main')
-// )
 
 const element = (<div>
-                    <Students />
-                    <h1> 🤣</h1>
+                  <BrowserRouter>                  
+                    <Switch>
+                      <Route exact path="/" component={SillyMain} />                
+                      <Route exact path="/students" component={Students}/>   
+                    </Switch>
+                  </BrowserRouter>
                 </div>);
 
-
 render(
-    element
- ,
+  element
+  ,
   document.getElementById('main')
 )
 
+//<Students />
+//<h1> 🤣 </h1>
