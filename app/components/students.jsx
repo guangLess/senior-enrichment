@@ -3,8 +3,11 @@ import {connect} from 'react-redux'
 import {getStudents, addStudent} from '../reducers/studentStore'
 import store from '../store'
 import Query from './Query'
+import axios from 'axios'
+
 
 // version of not using connect 
+/* eslint-disable */
 
 class Students extends React.Component {
     constructor (){
@@ -26,10 +29,15 @@ class Students extends React.Component {
         this.unsubscribe();
     }
 
-    addStudent(newStudent){
-        console.log(newStudent)
-        const addStudentByThunk = addStudent(newStudent);
-        store.dispatch(addStudentByThunk);
+    addStudent(name){
+        console.log('fetched name from query ---', name)
+        const addStudentThuk = addStudent(name);
+        store.dispatch(addStudentThuk);
+        // axios.post('/api/student', name)
+        // .then(res => {
+        //         console.log(res.data)
+        //     }
+        // )
     }
 
     render() {
@@ -46,8 +54,8 @@ class Students extends React.Component {
             }
             </ul>
             <h3> Add Student </h3>
-            <h2> here--->{this.addStudent} </h2>
-            <Query submitStudent={this.addStudent}/>
+            <h2> here---> </h2>
+            <Query addStudent={this.addStudent}/>
         </div>
         )
     }

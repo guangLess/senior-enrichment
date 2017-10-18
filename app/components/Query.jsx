@@ -1,8 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-
-import {addStudent} from '../reducers/studentStore'
-
 
 
 class Query extends React.Component {
@@ -13,16 +9,14 @@ class Query extends React.Component {
     }
 
     handelSubmit(evt){
-        evt.preventDefalut();
+        evt.preventDefault();
+        
         const nameData = {
             name: evt.target.name.value,
             email: evt.target.email.value
         }
         console.log("name submited ----", nameData)
-
-        addStudent(nameData);
-        //this.props.submitStudent(nameData);
-
+        this.props.addStudent(nameData)
     }
 
     render(){
