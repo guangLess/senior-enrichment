@@ -10,6 +10,7 @@
 // This is also probably a good place for you to set up your associations
 */
 
+//FIXME: add casecade on delete
 const Student = require('./student')
 const Campus = require('./campus')
 const db = require('../index')
