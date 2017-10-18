@@ -32,4 +32,9 @@ export default function reducer(students = [], action){
 }
 
 //thunk
-export const getStudents = () => dispatch
+export const getStudents = () => dispatch => {
+    axios.get('/api/student')
+        .then(res => dispatch(
+            init(res.data)
+        ))
+}

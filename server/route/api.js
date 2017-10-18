@@ -10,7 +10,7 @@ const studentRoute = require('./studentRoute');
 api.get('/hello', (req, res) => res.send({hello: 'world'}))
 
 api.use('/student', studentRoute);
-
+//FIXME: maybe should be students(fix it later)
 //api.use('/student', require('./studentRoute'));
 
 module.exports = api
