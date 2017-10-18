@@ -38,3 +38,11 @@ export const getStudents = () => dispatch => {
             init(res.data)
         ))
 }
+
+export const addStudent = (studentData) => dispatch => {
+    studentData = {name:'home', email:'sleep@d.con'}
+    axios.post('/api/student', studentData)
+        .then(res => dispatch(
+            create(res.data)
+        ))
+}

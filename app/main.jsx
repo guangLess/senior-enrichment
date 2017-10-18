@@ -24,5 +24,3 @@ render(
   document.getElementById('main')
 )
 
-//<Students />
-//<h1> 🤣 </h1>

@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getStudents} from '../reducers/studentStore'
+import {getStudents, addStudent} from '../reducers/studentStore'
 import store from '../store'
-
+import Query from './Query'
 
 // version of not using connect 
 
@@ -10,6 +10,7 @@ class Students extends React.Component {
     constructor (){
         super();
         this.state = store.getState();
+        this.addStudent = this.addStudent.bind(this)
     }
 
     componentDidMount() {
@@ -25,13 +26,18 @@ class Students extends React.Component {
         this.unsubscribe();
     }
 
+    addStudent(newStudent){
+        console.log(newStudent)
+        const addStudentByThunk = addStudent(newStudent);
+        store.dispatch(addStudentByThunk);
+    }
+
     render() {
         const studentData = this.state.students;
-        //console.log("I am getting state---", this.state)
         console.log("I am getting state---", studentData)
         return (
             <div>
-            <h1> Hello Student React Componets</h1>
+            <h1> Hello 🌎 Student</h1>
             <ul>
             {
                 studentData.map(student =>  
@@ -39,6 +45,9 @@ class Students extends React.Component {
                 )
             }
             </ul>
+            <h3> Add Student </h3>
+            <h2> here--->{this.addStudent} </h2>
+            <Query submitStudent={this.addStudent}/>
         </div>
         )
     }
