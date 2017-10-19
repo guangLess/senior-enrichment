@@ -2,7 +2,9 @@ import React from 'react'
 import {getCampuses} from '../reducers/campusStore'
 import {connect} from 'react-redux'
 import store from '../store'
-import axios from 'axios'
+//import axios from 'axios'
+
+import Lists from './Lists'
 
 
 export default class Campuses extends React.Component{
@@ -37,6 +39,7 @@ export default class Campuses extends React.Component{
         return (
         <div>
         <h1> Hello  👩🏻‍🌾  Campus. </h1>
+        <Lists contents={campusData.campuses} />
         </div>
         )
     }
