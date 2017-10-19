@@ -37,11 +37,11 @@ route.post('/', (req, res, next ) => {
     console.log("content---->", content)
     Campus.create({
         name: content.name,
-        email: content.email//maybe need to include campus
+        image: content.image
     }).then(book => 
         res.status(200).json(book)
-        )
-//curl -H "Content-Type: application/json" -X POST -d '{"name":"friendie dog","email":"dog@cute.com"}' http://localhost:1337/api/Campus/
+        )       
+     //curl -H "Content-Type: application/json" -X POST -d '{"name":"FullStack","image":"im/gLocation"}' http://localhost:1337/api/Campus/
 })
 
 route.put('/:id', (req, res, next) => {
@@ -60,7 +60,6 @@ route.put('/:id', (req, res, next) => {
                 : res.status(404).json({ stuInfo: 'Attempt To Update Campus stuInfo' })
         })
 })
-
 
 
 route.use((err, req, res, next) => {
