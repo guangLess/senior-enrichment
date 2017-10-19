@@ -1,6 +1,7 @@
 'use strict'
 const api = require('express').Router()
 const studentRoute = require('./studentRoute');
+const campusRoute = require('./campusRoute')
 //const  = require('../db')
 
 
@@ -10,6 +11,8 @@ const studentRoute = require('./studentRoute');
 api.get('/hello', (req, res) => res.send({hello: 'world'}))
 
 api.use('/student', studentRoute);
+api.use('/campus', campusRoute);
+
 //FIXME: maybe should be students(fix it later)
 //api.use('/student', require('./studentRoute'));
 

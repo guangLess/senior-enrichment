@@ -21,6 +21,7 @@ class Students extends React.Component {
         this.unsubscribe = store.subscribe( () => {
             this.setState(store.getState())
         } )
+
         //FIXME: warnings of unmount when re-render
         const getStudentsByThunk =  getStudents();
         store.dispatch(getStudentsByThunk);
@@ -36,7 +37,14 @@ class Students extends React.Component {
     }
 
     render() {
-        const studentData = this.state.students;
+        let studentData = this.state.students;
+
+        debugger;
+        //
+        //this.state.students ? studentData = this.state.student : studentData = []
+
+
+
         console.log("I am getting state---", studentData)
         return (
             <div>

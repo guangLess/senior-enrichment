@@ -52,7 +52,7 @@ class SingleStudent extends React.Component {
     return (
         <div>
         <h1> Hello 👩🏻‍🌾 SingleStudent. </h1>
-        <h2>--> {studentInfo.name}{studentInfo.email}{cname}</h2>
+        <h2>--> {studentInfo.name} --- {studentInfo.email} at campus {cname}</h2>
         <h2> ➕ 👩🏻‍🔖  update  </h2>
         <Query addOrUpdate={this.updateStudent}/>        
         </div>
