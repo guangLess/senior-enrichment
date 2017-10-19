@@ -44,7 +44,6 @@ class Students extends React.Component {
         //this.state.students ? studentData = this.state.student : studentData = []
 
 
-
         console.log("I am getting state---", studentData)
         return (
             <div>

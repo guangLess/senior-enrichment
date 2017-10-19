@@ -2,8 +2,6 @@ import React from 'react'
 import {getCampuses} from '../reducers/campusStore'
 import {connect} from 'react-redux'
 import store from '../store'
-//import axios from 'axios'
-
 import Lists from './Lists'
 
 
@@ -21,12 +19,6 @@ export default class Campuses extends React.Component{
         //FIXME: warnings of unmount when re-render
         const getCampusesByThunk = getCampuses();
         store.dispatch(getCampusesByThunk);
-
-
-        // axios.get('/api/campus')
-        // .then(res => {
-        //    console.log("----campus---->", res.data)
-        // })
     }
 
     componetWillUnmount () {
@@ -40,7 +32,7 @@ export default class Campuses extends React.Component{
         <div>
         <h1> Hello  👩🏻‍🌾  Campus. </h1>
         <Lists contents={campusData.campuses} Item={({item}) => <h2>{item.name}</h2>}/>
-        </div> 
+        </div>
         )
     }
 }

@@ -8,7 +8,7 @@ const NameOf = ({item}) => (<span> {item.name} </span>)
 class Lists extends React.Component {
 
     render(){
-        const {Item = NameOf} = this.props //added default
+        const {Item = NameOf} = this.props //added default 
 
     return (
         //console.log("llists conetens got passed in from parents", contents)
@@ -25,7 +25,7 @@ class Lists extends React.Component {
                             <Item item={ele}/> </Link>
                         </li>  
                     )
-                    : "can not find campuse"
+                    : "can not find campus"
                     
                 }
                 </ul>
