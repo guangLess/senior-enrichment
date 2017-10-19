@@ -3,50 +3,36 @@ import { Link } from 'react-router-dom'
 
 /* eslint-disable */
 
-class Lists extends React.Component {
-    // constructor(props){
-    //     super(props)
-    //     //this.state = {"contents": props.contents}
-    //     //this.handelSubmit = this.handelSubmit.bind(this);
-    // }
+const NameOf = ({item}) => (<span> {item.name} </span>)
 
-    // handelSubmit(evt){
-    //     evt.preventDefault();
-        
-    //     const nameData = {
-    //         name: evt.target.name.value,
-    //         email: evt.target.email.value
-    //     }
-    //     console.log("name submited ----", nameData)
-    //     this.props.addOrUpdate(nameData)
-    // }
+class Lists extends React.Component {
 
     render(){
-        //FIXME: this logic can be fixed
-        let contents = [];
-            this.props.contents
-        ? contents = this.props.contents
-        : contents = []
+        const {Item = NameOf} = this.props //added default
 
-        console.log("llists conetens got passed in from parents", contents)
-        return (
+    return (
+        //console.log("llists conetens got passed in from parents", contents)
             <div>
                 <h2>lists of content from Lists comp </h2>
                 <ul>
                 {
-                    contents.map(ele =>  
+                   //FIXME: this logic can be fixed
+                    //let contents = [];
+                    this.props.contents
+                    ? this.props.contents.map(ele =>  
                         <li key={ele.id}>                    
                         <Link to={`/${ele.name}/${ele.id}`}>
-                            {ele.name} </Link>
+                            <Item item={ele}/> </Link>
                         </li>  
                     )
+                    : "can not find campuse"
+                    
                 }
                 </ul>
             </div>
         )
     }
 }
-
 
 export default Lists;
 

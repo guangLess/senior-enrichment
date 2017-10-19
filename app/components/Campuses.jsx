@@ -39,8 +39,8 @@ export default class Campuses extends React.Component{
         return (
         <div>
         <h1> Hello  👩🏻‍🌾  Campus. </h1>
-        <Lists contents={campusData.campuses} />
-        </div>
+        <Lists contents={campusData.campuses} Item={({item}) => <h2>{item.name}</h2>}/>
+        </div> 
         )
     }
 }

@@ -1,6 +1,8 @@
 
 const Promise = require('bluebird')
-const db = require('./index')
+//const db = require('./index') // pull models and deconstrotr dabase 
+
+const {db} = require('./models')
 
 const data = {
   student: [

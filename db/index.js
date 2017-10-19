@@ -20,4 +20,3 @@ module.exports = new Sequelize(connectionString, {
 
 //FIXME: I only need it for seed my model, after that this code costs trouble 
 //for the referencing issues.
-//require('./models')
