@@ -22,14 +22,14 @@ class Query extends React.Component {
     render(){
         return (
             <div>
-                <h1> Find 🌎 Student from StudentsQuery. </h1>
+                <h2> ➕ 👩🏻‍🌾  Add student ➕ </h2>
                 <form onSubmit={this.handelSubmit} >
                 <label>
                  Student Name & email :
                 <input type="name" name='name' />
                 <input type='email' name='email' />
                 </label>
-                <button type="submit" className="">find</button>
+                <button type="submit" className="">➕</button>
                 </form>
             </div>
         )

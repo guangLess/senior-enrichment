@@ -1,10 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux'
+//import {connect} from 'react-redux'
 import {getStudents, addStudent} from '../reducers/studentStore'
 import store from '../store'
 import Query from './Query'
-import axios from 'axios'
 
+
+import { Link } from 'react-router-dom'
 
 // version of not using connect 
 /* eslint-disable */
@@ -22,6 +23,7 @@ class Students extends React.Component {
         } )
         //fetch data 
         //dispatch to store
+        //FIXME: warnings of unmount when re-render
         const getStudentsByThunk =  getStudents();
         store.dispatch(getStudentsByThunk);
     }
@@ -33,11 +35,6 @@ class Students extends React.Component {
         console.log('fetched name from query ---', name)
         const addStudentThuk = addStudent(name);
         store.dispatch(addStudentThuk);
-        // axios.post('/api/student', name)
-        // .then(res => {
-        //         console.log(res.data)
-        //     }
-        // )
     }
 
     render() {
@@ -45,17 +42,20 @@ class Students extends React.Component {
         console.log("I am getting state---", studentData)
         return (
             <div>
-            <h1> Hello 🌎 Student</h1>
+            <h1> Hello 🌎 Students</h1>
+            <h2> 👩🏻‍🌾  </h2>
+            <Query addStudent={this.addStudent}/>
             <ul>
             {
                 studentData.map(student =>  
-                    <li key={student.id}>{student.name} </li>
+                    <li key={student.id}>                    
+                    <Link to={`/students/${student.id}`}>
+                        {student.name} </Link>
+                    </li>  
                 )
             }
             </ul>
-            <h3> Add Student </h3>
-            <h2> here---> </h2>
-            <Query addStudent={this.addStudent}/>
+
         </div>
         )
     }
