@@ -1,9 +1,12 @@
 const route = require('express').Router()
+const db = require('../../db/models/index')
 const Student = require('../../db/models/student')
+const Campus = require('../../db/models/campus')
 var error = new Error()
 
 route.get('/', (req, res, next ) => {
-    Student.findAll().then(data => {
+    Student.findAll()
+        .then(data => {
                             data
                             ? res.status(200).json(data)
                             : res.status(404).json('Can not find Student')
@@ -14,8 +17,12 @@ route.get('/', (req, res, next ) => {
 route.get('/:id', (req, res, next ) => {
     let id = req.params.id
     if (!Number(id)) return next(error)
-
-    Student.findById(id).then(data => {
+    
+    Student.findOne({
+        where: {id: id}, 
+        include: [{model: Campus}]
+    })
+    .then(data => {
                             data
                             ? res.status(200).json(data)
                             : res.status(404).json('Can not find Student')
@@ -31,8 +38,25 @@ route.post('/', (req, res, next ) => {
         email: content.email//maybe need to include campus
     }).then(book => 
         res.status(200).json(book)
-        ) //maybe redirect to itself?
+        )
 //curl -H "Content-Type: application/json" -X POST -d '{"name":"friendie dog","email":"dog@cute.com"}' http://localhost:1337/api/student/
+})
+
+route.put('/:id', (req, res, next) => {
+    const {name, email} = req.body
+    let id = req.params.id
+    if (!Number(id)) return next(err);
+    
+    Student.findById(id).then(
+        stu => {
+            stu
+                ? stu.update({
+                    name, email
+                }).then(result =>
+                    res.status(200).json(result)
+                    )
+                : res.status(404).json({ stuInfo: 'Attempt To Update Student stuInfo' })
+        })
 })
 
 

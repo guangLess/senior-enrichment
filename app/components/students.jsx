@@ -21,8 +21,6 @@ class Students extends React.Component {
         this.unsubscribe = store.subscribe( () => {
             this.setState(store.getState())
         } )
-        //fetch data 
-        //dispatch to store
         //FIXME: warnings of unmount when re-render
         const getStudentsByThunk =  getStudents();
         store.dispatch(getStudentsByThunk);
@@ -44,7 +42,7 @@ class Students extends React.Component {
             <div>
             <h1> Hello 🌎 Students</h1>
             <h2> 👩🏻‍🌾  </h2>
-            <Query addStudent={this.addStudent}/>
+            <Query addOrUpdate={this.addStudent}/>
             <ul>
             {
                 studentData.map(student =>  

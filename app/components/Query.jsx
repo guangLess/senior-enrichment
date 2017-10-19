@@ -16,7 +16,7 @@ class Query extends React.Component {
             email: evt.target.email.value
         }
         console.log("name submited ----", nameData)
-        this.props.addStudent(nameData)
+        this.props.addOrUpdate(nameData)
     }
 
     render(){

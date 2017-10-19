@@ -55,3 +55,11 @@ export const getSingleStudent = (id) => dispatch => {
                     fetch(res.data)
                 ))
 }
+
+export const updateStudent = (info) => dispatch => {
+    axios.put('/api/student/' + info.id, info)
+        .then(res =>
+                dispatch(
+                    update(res.data)
+                ))
+}
