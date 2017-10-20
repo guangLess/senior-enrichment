@@ -26,8 +26,8 @@ export default function reducer(students = [], action){
             return action.student
 
         case REMOVE_STUDENT:
-                return students.filter(stu => stu.id !== action.id);
-        default: 
+                return action.id
+        default:
         return students
     }
 }
@@ -62,4 +62,13 @@ export const updateStudent = (info) => dispatch => {
                 dispatch(
                     update(res.data)
                 ))
+}
+
+export const deleteStudent = (id) => dispatch => {
+    axios.delete('/api/student/' + id)
+        .then(res => {
+            console.log("deleted data---", res)
+                dispatch(
+                    remove(res.data)
+                )})
 }

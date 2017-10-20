@@ -22,7 +22,7 @@ class Query extends React.Component {
     render(){
         return (
             <div>
-                <h2> ➕ 👩🏻‍🌾  Add student ➕ </h2>
+                <h2> ➕ 👩🏻‍🌾{this.props.type} ➕ </h2>
                 <form onSubmit={this.handelSubmit} >
                 <label>
                  Student Name & email :

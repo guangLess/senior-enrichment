@@ -10,6 +10,8 @@ import SillyMain from './components/silly'
 
 import Students from './components/students'
 import SingleStudent from './components/SingleStudent'
+import SingleCampus from './components/SingleCampus'
+
 import Campuses from './components/Campuses'
 
 
@@ -19,8 +21,9 @@ const element = (<Provider store={store}>
                     <Switch>
                       <Route exact path="/" component={SillyMain} />                
                       <Route exact path="/students" component={Students}/>   
+                      <Route exact path="/campuses" component={Campuses}/>                      
                       <Route exact path="/students/:id" component={SingleStudent}/>
-                      <Route exact path="/campuses" component={Campuses}/>
+                      <Route exact path="/campuses/:id" component={SingleCampus}/>                      
                     </Switch>
                   </BrowserRouter>
                 </div>

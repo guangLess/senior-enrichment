@@ -12,9 +12,9 @@ const FETCH_CAMPUS = 'FETCH_CAMPUS'
 
 // Actions 
 const init = campuses => ({ type: INIT_CAMPUS, campuses })
-const update = campuse => ({ type: UPDATE_CAMPUS, campuse })
-const create = campuse => ({ type: CREATE_CAMPUS, campuse })
-const fetch = campuse => ({type: FETCH_CAMPUS, campuse})
+const update = campus => ({ type: UPDATE_CAMPUS, campus })
+const create = campus => ({ type: CREATE_CAMPUS, campus })
+const fetch = campus => ({type: FETCH_CAMPUS, campus})
 const remove = id => ({type: REMOVE_CAMPUS, id})
 
 //reducer
@@ -31,14 +31,14 @@ export default function reducer (campuses = [], action){
           return action.campus
       case REMOVE_CAMPUS:
               return campuses.filter(camp => camp.id !== action.id);
-     default: 
+     default:
      return campuses
   }
 }
 
 //thunk 
 export const getCampuses = () => dispatch => {
-    console.log("get inside of the store ====>")
+    //console.log("get inside of the store ====>")
   axios.get('/api/campus')
       .then(res => dispatch(
           init(res.data)
@@ -47,22 +47,24 @@ export const getCampuses = () => dispatch => {
 
 export const addCampus = (CampusesData) => dispatch => {
   axios.post('/api/campus', CampusesData)
-      .then(res => 
+      .then(res =>
               dispatch(
                   create(res.data)
               ))
 }
 
 export const getSingleCampus = (id) => dispatch => {
-  axios.get('/api/campuse/' + id)
-      .then(res =>
-              dispatch(
+    //console.log("get inside of the store ====>") 
+  axios.get('/api/campus/' + id)
+      .then(res =>{
+          console.log("res", res)
+             return  dispatch(
                   fetch(res.data)
-              ))
+              )})
 }
 
 export const updateCampus = (info) => dispatch => {
-  axios.put('/api/campuse/' + info.id, info)
+  axios.put('/api/campus/' + info.id, info)
       .then(res =>
               dispatch(
                   update(res.data)

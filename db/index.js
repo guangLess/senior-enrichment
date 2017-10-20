@@ -17,6 +17,3 @@ module.exports = new Sequelize(connectionString, {
 });
 
 // run our models file (makes all associations for our Sequelize objects)
-
-//FIXME: I only need it for seed my model, after that this code costs trouble 
-//for the referencing issues.

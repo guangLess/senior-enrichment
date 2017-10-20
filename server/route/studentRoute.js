@@ -59,6 +59,24 @@ route.put('/:id', (req, res, next) => {
         })
 })
 
+route.delete('/:id', (req, res, next) => {
+    let id = req.params.id
+    if (!Number(id)) return next(err);
+    Student.destroy({
+        where: {
+            id: id
+        }
+    }).then( num => {
+        console.log("---------->stu-->>>", num ); //check row num get effected 
+                (num === 0)
+                ? res.status(404).end()
+                : res.status(204).json({"name":"byebye"})
+    })
+//curl -H "Content-Type: application/json" -X DELETE -d '{"":"kate","password":"1234"}' http://localhost:1337/api/students/
+//curl -X DELETE 'http://localhost:1337/api/student/3'
+
+})
+
 
 route.use((err, req, res, next) => {
   res.status(500);//internal error

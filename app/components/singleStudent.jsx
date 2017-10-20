@@ -3,17 +3,16 @@ import React from 'react'
 import store from '../store'
 import axios from 'axios'
 import Query from './Query'
+import { Link } from 'react-router-dom'
 
-import {getSingleStudent, updateStudent} from '../reducers/studentStore'
-
-
+import {getSingleStudent, updateStudent, deleteStudent} from '../reducers/studentStore'
 
 class SingleStudent extends React.Component {
     constructor(){
         super()
-        //this.state = {name: '', email:''} // add campus later!
         this.state = store.getState();
         this.updateStudent = this.updateStudent.bind(this)
+        this.deleteStudent = this.deleteStudent.bind(this)
     }
 
     componentDidMount() {
@@ -24,7 +23,6 @@ class SingleStudent extends React.Component {
         } )
         const getSingleStudentByThunk = getSingleStudent(id);
         store.dispatch(getSingleStudentByThunk); 
-
     }
 
     componetWillUnmount () {
@@ -39,12 +37,18 @@ class SingleStudent extends React.Component {
         store.dispatch(updateStudentThuk);
     }
 
+    deleteStudent(){
+        const stuId = this.props.match.params.id
+        const deletStuThuk = deleteStudent(stuId)
+        store.dispatch(deletStuThuk) 
+    }
+
     render() {
         const studentInfo = this.state.students; // because it's a string "1", not a number!        
         console.log("what is passed in------>", this.state.students) 
         let cname = '' ;
 
-        this.state.students.hasOwnProperty('campus') ? 
+        this.state.students.campusId ? 
         cname = this.state.students.campus.name
         : cname = 'no campuse '
        // debugger;
@@ -52,14 +56,13 @@ class SingleStudent extends React.Component {
     return (
         <div>
         <h1> Hello 👩🏻‍🌾 SingleStudent. </h1>
-        <h2>--> {studentInfo.name} --- {studentInfo.email} at campus {cname}</h2>
+        <h2>--> {studentInfo.name} --- {studentInfo.email} at {cname}</h2>
         <h2> ➕ 👩🏻‍🔖  update  </h2>
-        <Query addOrUpdate={this.updateStudent}/>        
+        <Link to={'/students'} style={{textDecoration:'none', fontSize: 30}} onClick={this.deleteStudent}> 🚫 delete  </Link>
+        <Query addOrUpdate={this.updateStudent} type={"Update"}/>        
         </div>
         )
     }
 }
 
 export default SingleStudent;
-
-

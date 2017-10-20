@@ -9,7 +9,7 @@ class Lists extends React.Component {
 
     render(){
         const {Item = NameOf} = this.props //added default 
-        console.log("llists conetens got passed in from parents", this.props.contents)
+        console.log("llists conetens got passed in from parents----->", this.props.contents)
 
     return (
             <div>
@@ -24,6 +24,7 @@ class Lists extends React.Component {
                         </li>  
                     )
                     : "can not find campus"
+                    
                 }
                 </ul>
             </div>

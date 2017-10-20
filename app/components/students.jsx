@@ -5,9 +5,6 @@ import {getStudents, addStudent} from '../reducers/studentStore'
 import store from '../store'
 import Query from './Query'
 import Lists from './Lists'
-
-
-
 // version of not using connect 
 /* eslint-disable */
 
