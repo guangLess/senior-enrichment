@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 //import {connect} from 'react-redux'
 import {getStudents, addStudent} from '../reducers/studentStore'
 import store from '../store'
 import Query from './Query'
+import Lists from './Lists'
 
 
-import { Link } from 'react-router-dom'
 
 // version of not using connect 
 /* eslint-disable */
@@ -50,17 +51,7 @@ class Students extends React.Component {
             <h1> Hello 🌎 Students</h1>
             <h2> 👩🏻‍🌾  </h2>
             <Query addOrUpdate={this.addStudent}/>
-            <ul>
-            {
-                studentData.map(student =>  
-                    <li key={student.id}>                    
-                    <Link to={`/students/${student.id}`}>
-                        {student.name} </Link>
-                    </li>  
-                )
-            }
-            </ul>
-
+            <Lists contents={studentData} type={'students'} Item={({item}) => <h3>{item.name}</h3>}/>
         </div>
         )
     }
@@ -79,6 +70,18 @@ const Student = () => (
     <h1> Hello I am rendering inside student. </h1>
     </div>
 )
+*/
+/*
+            <ul>
+            {
+                studentData.map(student =>  
+                    <li key={student.id}>                    
+                    <Link to={`/students/${student.id}`}>
+                        {student.name} </Link>
+                    </li>  
+                )
+            }
+            </ul>
 */
 
 export default Students;

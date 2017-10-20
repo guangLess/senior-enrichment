@@ -1,6 +1,6 @@
 import React from 'react'
 import {getCampuses} from '../reducers/campusStore'
-import {connect} from 'react-redux'
+//import {connect} from 'react-redux'
 import store from '../store'
 import Lists from './Lists'
 
@@ -31,7 +31,7 @@ export default class Campuses extends React.Component{
         return (
         <div>
         <h1> Hello  👩🏻‍🌾  Campus. </h1>
-        <Lists contents={campusData.campuses} Item={({item}) => <h2>{item.name}</h2>}/>
+        <Lists contents={campusData.campuses} type={'campuses'} Item={({item}) => <h2>{item.name}</h2>}/>
         </div>
         )
     }
