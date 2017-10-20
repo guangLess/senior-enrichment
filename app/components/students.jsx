@@ -44,7 +44,7 @@ class Students extends React.Component {
 
         console.log("I am getting state---", studentData)
         return (
-            <div>
+            <div className='students'>
             <h1> Hello 🌎 Students</h1>
             <h2> 👩🏻‍🌾  </h2>
             <Query addOrUpdate={this.addStudent}/>
