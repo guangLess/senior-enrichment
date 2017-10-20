@@ -1,5 +1,7 @@
 import React from 'react'
 
+//TODO: Add campus comp so that it will capture inputs accrodingly
+
 
 class Query extends React.Component {
     constructor(props){
@@ -25,7 +27,7 @@ class Query extends React.Component {
                 <h2> ➕ 👩🏻‍🌾{this.props.type} ➕ </h2>
                 <form onSubmit={this.handelSubmit} >
                 <label>
-                 Student Name & email :
+                 Name & content :
                 <input type="name" name='name' />
                 <input type='email' name='email' />
                 </label>
